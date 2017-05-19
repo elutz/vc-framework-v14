@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en","invisible":true,"folder":"Error Handling"} comment added and reserved by 4D.
+//%attributes = {"invisible":true,"folder":"Error Handling","lang":"en"} comment added and reserved by 4D.
 // --[HEADERSTART]-------------------------------------
 // User name (OS): Joshua Fletcher
 // Date and time: 06/16/11, 18:12:04
@@ -120,3 +120,12 @@ C_LONGINT(<>WARN_ASSET_BadPathsFound_l)
 
 <>WARN_ASSET_BadName_L:=-18801
 <>WARN_ASSET_BadPathsFound_l:=-18802
+
+// *****************
+//   -20000-... - IMPORT_
+// *****************
+C_LONGINT(<>ERR_IMPORT_NothingToImport_l)
+C_LONGINT(<>ERR_IMPORT_EmptyMethod_l)
+
+<>ERR_IMPORT_NothingToImport_l:=-20000
+<>ERR_IMPORT_EmptyMethod_l:=-20001

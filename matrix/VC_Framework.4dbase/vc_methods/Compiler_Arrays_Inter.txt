@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en","invisible":true} comment added and reserved by 4D.
+//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
 ARRAY TEXT(<>VCF_BorderLineStyles_at;0)
 ARRAY TEXT(<>VCF_FormEvents_at;0)
 ARRAY TEXT(<>VCF_HorizontalAlign_at;0)

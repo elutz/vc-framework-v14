@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en","invisible":true} comment added and reserved by 4D.
+//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
 C_LONGINT(<>ERR_4D_l)
 C_LONGINT(<>ERR_CLEAN_MoveFailed_l)
 C_LONGINT(<>ERR_EXT_NotOpen_l)
@@ -76,3 +76,8 @@ C_LONGINT(<>VC_DeletePID_l)
 C_BOOLEAN(<>VC_DeleteProcDone_f)
 C_LONGINT(<>VC_ExportPID_l)
 C_BOOLEAN(<>VC_ExportProcDone_f)
+
+C_LONGINT(<>ERR_IMPORT_NothingToImport_l)
+C_LONGINT(<>ERR_IMPORT_EmptyMethod_l)
+
+

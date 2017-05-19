@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en","invisible":true} comment added and reserved by 4D.
+//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
 ARRAY TEXT(cachedCurrentPaths_at;0)
 ARRAY TEXT(cachedFormNames_at;0)
 ARRAY LONGINT(cachedTableNums_al;0)

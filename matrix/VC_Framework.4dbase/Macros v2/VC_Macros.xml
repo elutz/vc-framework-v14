@@ -47,4 +47,7 @@ If ($vc_found_l>0)
 	EXECUTE METHOD("VC_STARTUP")
 End if</text>
 	</macro>
+        <macro name="VC_Framework: Import methods" type_ahead="false" in_menu="false" in_toolbar="true" version="2">
+                <text><method>VCM_Import</method></text>
+        </macro>
 </macros>

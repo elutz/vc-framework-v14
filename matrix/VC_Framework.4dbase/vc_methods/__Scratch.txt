@@ -1,1 +1,4 @@
-//%attributes = {"lang":"en","invisible":true} comment added and reserved by 4D.
+//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
+// Scratch Scratch Scratch
+// Testscratch
+// 3. test

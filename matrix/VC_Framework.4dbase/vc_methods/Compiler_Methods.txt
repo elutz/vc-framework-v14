@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en","invisible":true} comment added and reserved by 4D.
+//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
 C_OBJECT(VC_STARTUP ;$1)
 C_LONGINT(VC_EXT_Open ;$0)
 C_LONGINT(VC_EXT_Close ;$0)

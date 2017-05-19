@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en","invisible":true} comment added and reserved by 4D.
+//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
 C_REAL(3D Button)
 C_REAL(3D Check Box)
 C_REAL(3D Radio Button)
@@ -81,3 +81,7 @@ C_REAL(VC_LOG_bURL_l)
 C_BOOLEAN(VC_ProgInstalled_f)
 C_TEXT(vRecNum)
 C_TEXT(Web Area)
+
+C_REAL(HEADER1)
+C_REAL(HEADER2)
+C_REAL(HEADER3)
