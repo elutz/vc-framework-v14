@@ -5,6 +5,7 @@
 * Forms are now exported! They are exported in JSON format and stored in a folder named "vc_forms".
 * Your exported methods will be moved from "vc_source" to "vc_methods" to make things clearer.
 * Advanced customization options are available for those that want them (but they are NOT necessary).
+* Possibility to import outside changes (methods only). More see below.
 
 ## Description
 
@@ -128,3 +129,26 @@ The VC_Framework component can be extended to support basic revision control (RC
 The VC_Framework component will call these methods prior to saving/deleting the method. The callee can choose whether or not to allow the change as well as take any action necessary to notify the RC software of the change.
 
 The [VC_SVN](https://github.com/4D/vc-svn-v14) component is an example of this. VC_SVN will automatically execute the 'svn add' or 'svn delete' commands as appropriate.
+
+## Import Outside Changes
+
+Now it is possible to import changes made by pother developers in your team. This works with edited methods and new methods. It does not work with 4D forms since there is no way to build forms with means of the 4D programming language.
+These feature is useful if you want to do distributed team development and using a team development 4D server is not an appropriate way for you.
+
+How does it work?
+There is a new method **VCM_Import**. The method can be started using the macro call "Import methods". This triggers the import process. The import process looks for text files with newer or equal timestamp like the last changed method in 4D and shows a list with this found methods before you start the real import.
+
+Some notes:
+
+- Methods to be imported must not be opened in the design environment.
+- Methods deleted outside of 4D will not be recognized. You have to delete them manually.
+
+The recommended process:
+
+1. Close all your methods in 4D.
+2. Open only one method. Make sure this method isn't changed after the last edit of methods in your 4D structure.
+2. Checkout the changes from your co-developers e.g. using a source code versioning system like git or mercurial or every other way you aware of.
+2. Trigger the import using the macro "Import methods".
+3. Confirm the dialog showing the files to be imported.
+3. Ready! You should check the success of the import process doing a re-compile of your 4D structure.
+
