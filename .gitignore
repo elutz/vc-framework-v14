@@ -10,3 +10,4 @@ vc_svn_config.txt
 
 *.hgignore
 *~
+/matrix/VC_Framework_Build
