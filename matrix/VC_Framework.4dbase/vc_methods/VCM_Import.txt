@@ -31,7 +31,7 @@ PROG_Update ($progID_l;0)
 C_TEXT($sourcepath)
 $sourcepath:=Convert path POSIX to system(<>VCM_ROOT_POSIX_T+"/")
 ARRAY TEXT($doclist;0)
-DOCUMENT LIST($sourcepath;$doclist;Recursive parsing+Absolute path)
+DOCUMENT LIST($sourcepath;$doclist;Recursive parsing+Absolute path+Ignore invisible)
 
 PROG_Update ($progID_l;1/4)
 
@@ -65,8 +65,8 @@ For ($index;Size of array($doclist);1;-1)
 
 GET DOCUMENT PROPERTIES($doclist{$index};$locked;$hidden;$createdOn;$createdAt;$changedOn;$changedAt)
 
-If ($doclist{$index}#"@.txt")
-// process .txt files only
+If (($doclist{$index}#"@.txt") | (Match regex(".*\\\\\\..*";$doclist{$index})))
+// process .txt files only and don't process hidden files with . (like .hg/last-message.txt)
 DELETE FROM ARRAY($doclist;$index)
 
 Else 
