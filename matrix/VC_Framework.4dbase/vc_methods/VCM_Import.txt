@@ -119,6 +119,11 @@ UTIL_ERR_HandlerInstall
 C_TEXT($methodBody)
 $methodBody:=Document to text($doclist{$index};"UTF-8";Document with CR)
 
+// Wrong encoding
+If (Length($methodBody)=0)
+$error_l:=<>ERR_IMPORT_WrongEncoding_l
+End if 
+
 $error_l:=UTIL_ERR_HandlerRemove 
 
 PROG_Update ($progIDFiles_l;$index/Size of array($doclist);$index)

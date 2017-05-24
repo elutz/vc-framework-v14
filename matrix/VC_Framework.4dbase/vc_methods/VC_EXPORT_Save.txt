@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en","invisible":true} comment added and reserved by 4D.
+//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
 // --[HEADERSTART]-------------------------------------
 // User name (OS): Joshua Fletcher
 // Date and time: 07/30/14, 16:37:58
@@ -28,7 +28,7 @@ CREATE FOLDER($filePath_t;*)// Pass the * to indicate subfolders should be creat
 $error_l:=UTIL_ERR_HandlerRemove 
 
 
-
+// TODO Replace the next three blocks with TEXT TO DOCUMENT
 // == Fix line endings ===================================================
 
 // METHOD GET CODE returns CR for line endings.  This is really uncommon
@@ -38,7 +38,6 @@ $error_l:=UTIL_ERR_HandlerRemove
 If ($error_l=0)
 $fileContent_t:=Replace string($fileContent_t;Char(Carriage return);Char(Line feed))
 End if 
-
 
 
 // == Convert the content ===================================================

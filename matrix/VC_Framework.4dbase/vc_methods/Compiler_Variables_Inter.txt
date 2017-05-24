@@ -79,5 +79,6 @@ C_BOOLEAN(<>VC_ExportProcDone_f)
 
 C_LONGINT(<>ERR_IMPORT_NothingToImport_l)
 C_LONGINT(<>ERR_IMPORT_EmptyMethod_l)
+C_LONGINT(<>ERR_IMPORT_WrongEncoding_l)
 
 

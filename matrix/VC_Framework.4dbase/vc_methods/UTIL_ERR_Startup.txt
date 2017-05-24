@@ -35,6 +35,7 @@ End if
 //   -18600-18619 - METH_
 //   -18700-18719 - FORM_
 //   -18800-18819 - WARN_
+//   -20000-...   - IMPORT_
 // *****************
 
 
@@ -126,6 +127,8 @@ C_LONGINT(<>WARN_ASSET_BadPathsFound_l)
 // *****************
 C_LONGINT(<>ERR_IMPORT_NothingToImport_l)
 C_LONGINT(<>ERR_IMPORT_EmptyMethod_l)
+C_LONGINT(<>ERR_IMPORT_WrongEncoding_l)
 
-<>ERR_IMPORT_NothingToImport_l:=-20000
-<>ERR_IMPORT_EmptyMethod_l:=-20001
+<>ERR_IMPORT_NothingToImport_l:=-20001
+<>ERR_IMPORT_EmptyMethod_l:=-20002
+<>ERR_IMPORT_WrongEncoding_l:=-20003

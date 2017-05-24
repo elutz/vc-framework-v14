@@ -86,6 +86,20 @@
                <target>Warning: Some invalid paths found.</target>
             </trans-unit>
          </group>
+         <group resname="IMPORT_" id="20000">
+            <trans-unit id="20001" resname="IMPORT_NothingToImport">
+               <source>There is nothing to import.</source>
+               <target>There is nothing to import.</target>
+            </trans-unit>
+	    <trans-unit id="20002" resname="IMPORT_EmptyMethod">
+               <source>Warning: Method is empty.</source>
+               <target>Warning: Method is empty.</target>
+            </trans-unit>
+	    <trans-unit id="20003" resname="IMPORT_WrongEncoding">
+               <source>Error: Method file isn't in UTF-8 encoding.</source>
+               <target>Error: Method file isn't in UTF-8 encoding.</target>
+            </trans-unit>
+         </group>
       </body>
    </file>
 </xliff>
