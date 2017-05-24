@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
+﻿//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
 // --[HEADERSTART]-------------------------------------
 // User name (OS): Joshua Fletcher
 // Date and time: 07/30/14, 16:37:58
@@ -28,32 +28,19 @@ CREATE FOLDER($filePath_t;*)// Pass the * to indicate subfolders should be creat
 $error_l:=UTIL_ERR_HandlerRemove 
 
 
-// TODO Replace the next three blocks with TEXT TO DOCUMENT
-// == Fix line endings ===================================================
+// == Save the asset to disk ===================================================
 
+// == Fix line endings
 // METHOD GET CODE returns CR for line endings.  This is really uncommon
 // at the file level.  In point of fact git doesn't support bare CR at
 // all.  We could be platform specific, and do CRLF for Windows and LF
 // for Mac but this is messy.  Decided to just standardize on LF.
-If ($error_l=0)
-$fileContent_t:=Replace string($fileContent_t;Char(Carriage return);Char(Line feed))
-End if 
-
-
-// == Convert the content ===================================================
-
+// == Convert the content 
 // Assets will be saved as UTF-8 so I need to convert
 // the 4D Text (UTF-16) to UTF-8...
 If ($error_l=0)
-CONVERT FROM TEXT($fileContent_t;"UTF-8";$fileContent_b)
-End if 
-
-
-// == Save the asset to disk ===================================================
-
-If ($error_l=0)
 UTIL_ERR_HandlerInstall 
-BLOB TO DOCUMENT($filePath_t;$fileContent_b)
+TEXT TO DOCUMENT($filePath_t;$fileContent_t;"UTF-8";Document with LF)
 $error_l:=UTIL_ERR_HandlerRemove 
 End if 
 
