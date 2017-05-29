@@ -12,10 +12,12 @@
 //   Called by Macro.
 // --[HEADEREND]---------------------------------------
 C_LONGINT($error_l)
+C_TEXT($message)
 
 C_BOOLEAN(<>VC_Enabled_f)
 
 UTIL_ERR_Startup 
+
 
 
 If (<>VC_Enabled_f)
@@ -88,7 +90,7 @@ End if
 
 End for 
 
-// ====== Debugging code ======
+// ====== presenting alert ======
 C_TEXT($listOfMethods)
 C_LONGINT($methos_index)
 $listOfMethods:=""
@@ -102,7 +104,6 @@ End for
 ALERT("Import von "+String(Size of array($doclist))+" Methoden\n"+\
 "neuer als "+$recentfile+" "+String($lastChangedOn)+" "+String($lastChangedAt)+"\n"+\
 $listOfMethods)
-// ====== End Debugging code ======
 
 PROG_Update ($progID_l;3/4)
 
@@ -162,6 +163,8 @@ End if
 //End if 
 
 If ($error_l#0)
+// for error reporting
+$message:=$doclist{$index}
 $index:=Size of array($doclist)+1// break of for-loop
 End if 
 
@@ -182,7 +185,7 @@ APPEND TO ARRAY(UTIL_ERR_CallChain_at;Current method name)
 End if 
 
 If ($error_l#0)
-UTIL_ERR_HandleError ($error_l;<>VC_ComponentName_t;Current method name;"Error while importing")
+UTIL_ERR_HandleError ($error_l;<>VC_ComponentName_t;Current method name;"Error while importing: "+$message)
 End if 
 
 PROG_CloseAll 

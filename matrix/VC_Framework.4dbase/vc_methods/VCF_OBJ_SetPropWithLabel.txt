@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en","invisible":true} comment added and reserved by 4D.
+﻿//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
 // --[HEADERSTART]-------------------------------------
 // User name (OS): Joshua Fletcher
 // Date and time: 08/15/13
@@ -8,6 +8,9 @@
 //   to 4D constants. In order the make the exported
 //   file more readable, I also export the name of the
 //   constant in addition to just the value.
+// ----------------------------------------------------
+// Changes:
+//   // 11Jan2016 JIH - handle $value_l of -1; setting $value_t to 'unknown'
 // --[HEADEREND]---------------------------------------
 C_TEXT($1;$formObjectName_t)
 C_TEXT($2;$name_t)
@@ -28,7 +31,7 @@ Case of
 : ($name_t="type")
 $value_l:=OBJECT Get type(*;$formObjectName_t)
 $maximumValue_l:=Size of array(<>VCF_ObjectTypes_at)
-If ($value_l<=$maximumValue_l)
+If (($value_l<=$maximumValue_l) & ($value_l>0))
 $labelValue_t:=<>VCF_ObjectTypes_at{$value_l}
 Else 
 $labelValue_t:="unknown"
@@ -39,7 +42,7 @@ End if
 $formObjectPointer_p:=OBJECT Get pointer(Object named;$formObjectName_t)
 $value_l:=Type($formObjectPointer_p->)
 $maximumValue_l:=Size of array(<>VCF_VariableTypes_at)
-If ($value_l<=$maximumValue_l)
+If (($value_l<=$maximumValue_l) & ($value_l>0))
 $labelValue_t:=<>VCF_VariableTypes_at{$value_l}
 Else 
 $labelValue_t:="unknown"
@@ -50,7 +53,7 @@ End if
 // Action ID's are actually text because, someday, 4D may support custom actions.
 $value_t:=OBJECT Get action(*;$formObjectName_t)
 $maximumValue_l:=Size of array(<>VCF_ObjectActions_at)
-If ($value_l<=$maximumValue_l)
+If (($value_l<=$maximumValue_l) & ($value_l>0))
 $labelValue_t:=<>VCF_ObjectActions_at{$value_l}
 Else 
 $labelValue_t:="unknown"
@@ -60,7 +63,7 @@ End if
 : ($name_t="borderLineStyle")
 $value_l:=OBJECT Get border style(*;$formObjectName_t)
 $maximumValue_l:=Size of array(<>VCF_BorderLineStyles_at)
-If ($value_l<=$maximumValue_l)
+If (($value_l<=$maximumValue_l) & ($value_l>0))
 $labelValue_t:=<>VCF_BorderLineStyles_at{$value_l}
 Else 
 $labelValue_t:="unknown"
@@ -70,7 +73,7 @@ End if
 : ($name_t="horizontalAlignment")
 $value_l:=OBJECT Get horizontal alignment(*;$formObjectName_t)
 $maximumValue_l:=Size of array(<>VCF_HorizontalAlign_at)
-If ($value_l<=$maximumValue_l)
+If (($value_l<=$maximumValue_l) & ($value_l>0))
 $labelValue_t:=<>VCF_HorizontalAlign_at{$value_l}
 Else 
 $labelValue_t:="unknown"
@@ -80,7 +83,7 @@ End if
 : ($name_t="indicatorType")
 $value_l:=OBJECT Get indicator type(*;$formObjectName_t)
 $maximumValue_l:=Size of array(<>VCF_IndicatorType_at)
-If ($value_l<=$maximumValue_l)
+If (($value_l<=$maximumValue_l) & ($value_l>0))
 $labelValue_t:=<>VCF_IndicatorType_at{$value_l}
 Else 
 $labelValue_t:="unknown"
@@ -90,7 +93,7 @@ End if
 : ($name_t="subformPrintFrame")
 OBJECT GET PRINT VARIABLE FRAME(*;$formObjectName_t;$dontCare_f;$value_l)
 $maximumValue_l:=Size of array(<>VCF_SubformPrintFrame_at)
-If ($value_l<=$maximumValue_l)
+If (($value_l<=$maximumValue_l) & ($value_l>0))
 $labelValue_t:=<>VCF_SubformPrintFrame_at{$value_l}
 Else 
 $labelValue_t:="unknown"
@@ -100,7 +103,7 @@ End if
 : ($name_t="horizontalSizing")
 OBJECT GET RESIZING OPTIONS(*;$formObjectName_t;$value_l;$dontCare_l)
 $maximumValue_l:=Size of array(<>VCF_HorizontalSizing_at)
-If ($value_l<=$maximumValue_l)
+If (($value_l<=$maximumValue_l) & ($value_l>0))
 $labelValue_t:=<>VCF_HorizontalSizing_at{$value_l}
 Else 
 $labelValue_t:="unknown"
@@ -110,7 +113,7 @@ End if
 : ($name_t="verticalSizing")
 OBJECT GET RESIZING OPTIONS(*;$formObjectName_t;$dontCare_l;$value_l)
 $maximumValue_l:=Size of array(<>VCF_VerticalSizing_at)
-If ($value_l<=$maximumValue_l)
+If (($value_l<=$maximumValue_l) & ($value_l>0))
 $labelValue_t:=<>VCF_VerticalSizing_at{$value_l}
 Else 
 $labelValue_t:="unknown"
@@ -165,11 +168,10 @@ End if
 $labelValue_t:=$labelValue_t+"Command key mask"
 End if 
 
-
 : ($name_t="verticalAlignment")
 $value_l:=OBJECT Get vertical alignment(*;$formObjectName_t)
 $maximumValue_l:=Size of array(<>VCF_VerticalAlign_at)
-If ($value_l<=$maximumValue_l)
+If (($value_l<=$maximumValue_l) & ($value_l>0))
 $labelValue_t:=<>VCF_VerticalAlign_at{$value_l}
 Else 
 $labelValue_t:="unknown"
