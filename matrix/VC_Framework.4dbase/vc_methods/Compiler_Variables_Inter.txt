@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
+﻿//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
 C_LONGINT(<>ERR_4D_l)
 C_LONGINT(<>ERR_CLEAN_MoveFailed_l)
 C_LONGINT(<>ERR_EXT_NotOpen_l)
@@ -39,6 +39,7 @@ C_TEXT(<>VCM_KEY_objectName_t)
 C_TEXT(<>VCM_KEY_tableNameInvalid_t)
 C_TEXT(<>VCM_KEY_tableName_t)
 C_TEXT(<>VCM_LABEL_Stamp_t)
+C_TEXT(<>VCM_LABEL_StampImport_t)
 C_LONGINT(<>VCM_LastMethodStamp_l)
 C_LONGINT(<>VCM_MGPThreshold_l)
 C_TEXT(<>VCM_ROOT_POSIX_T)

@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en","invisible":true} comment added and reserved by 4D.
+﻿//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
 // --[HEADERSTART]-------------------------------------
 // User name (OS): Joshua Fletcher
 // Date and time: 07/21/14, 15:15:54
@@ -47,7 +47,9 @@ End if
 If ($error_l=0)
 $error_l:=VC_CLEAN_Pref ("Last Method Stamp";<>VCM_LABEL_Stamp_t)
 End if 
-
+If ($error_l=0)
+$error_l:=VC_CLEAN_Pref ("Last Import Stamp";<>VCM_LABEL_StampImport_t)
+End if 
 
 // ===================================================================================
 // VCF_

@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en","invisible":true} comment added and reserved by 4D.
+﻿//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
 // --[HEADERSTART]-------------------------------------
 // User name (OS): Joshua Fletcher
 // Date and time: 07/11/14, 14:34:03
@@ -8,6 +8,9 @@
 // --[HEADEREND]---------------------------------------
 C_TEXT(<>VCM_LABEL_Stamp_t)
 <>VCM_LABEL_Stamp_t:="VCM_LastMethodStamp"
+
+C_TEXT(<>VCM_LABEL_StampImport_t)
+<>VCM_LABEL_StampImport_t:="VCM_LastImportStamp"
 
 C_TEXT(<>VC_LABEL_DeleteOnChange_t)
 <>VC_LABEL_DeleteOnChange_t:="VC_DeleteOnChange"

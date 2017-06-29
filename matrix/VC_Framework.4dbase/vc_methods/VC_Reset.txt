@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en","invisible":true,"shared":true,"executedOnServer":true,"folder":"VC_Framework Startup"} comment added and reserved by 4D.
+﻿//%attributes = {"invisible":true,"shared":true,"executedOnServer":true,"folder":"VC_Framework Startup","lang":"en"} comment added and reserved by 4D.
 // --[HEADERSTART]-------------------------------------
 // User name (OS): Joshua Fletcher
 // Date and time: 04/11/12, 17:56:33
@@ -33,6 +33,11 @@ $error_l:=VC_EXT_PrefSet (<>VCM_LABEL_Stamp_t;"0")
 End if 
 If ($error_l=0)
 <>VCM_LastMethodStamp_l:=0
+End if 
+
+// Reset import stamp.
+If ($error_l=0)
+$error_l:=VC_EXT_PrefSet (<>VCM_LABEL_StampImport_t;"0")
 End if 
 
 // Reset form stamp.

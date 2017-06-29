@@ -1,4 +1,4 @@
-//%attributes = {"lang":"en","invisible":true} comment added and reserved by 4D.
+﻿//%attributes = {"invisible":true,"lang":"en"} comment added and reserved by 4D.
 // --[HEADERSTART]-------------------------------------
 // User name (OS): Joshua Fletcher
 // Date and time: 07/10/14, 17:36:17
@@ -58,9 +58,12 @@ C_TEXT(<>VCM_ROOT_POSIX_T)
 // ===================================================================================
 // Set up the external database.
 
-// Set the initial stamp value, but don't overwrite if it already exists.
+// Set the initial stamp values, but don't overwrite if they already exist.
 If ($error_l=0)
 $error_l:=VC_EXT_PrefSet (<>VCM_LABEL_Stamp_t;"0";False)
+End if 
+If ($error_l=0)
+$error_l:=VC_EXT_PrefSet (<>VCM_LABEL_StampImport_t;"0";False)
 End if 
 
 
