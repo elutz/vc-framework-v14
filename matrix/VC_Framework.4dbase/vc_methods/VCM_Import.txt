@@ -37,6 +37,26 @@ DOCUMENT LIST($sourcepath;$doclist;Recursive parsing+Absolute path+Ignore invisi
 
 PROG_Update ($progID_l;1/4)
 
+// two approaches of detecting which methods have to be imported
+// 1. all methods with a newer or same timestamp of the last edit in the database
+// 2. all methods after the the last import
+
+// if is the timestamp of the last import = 0, use method 1. i.e. the timestamp of the last change
+// in all other cases use the the timestamp of the last import
+
+// get the last import timestamp
+C_TEXT($lastImportISODate)// the last import time stamp as an ISO8601 formatted text
+VC_EXT_PrefGet (<>VCM_LABEL_StampImport_t;->$lastImportISODate)
+If ($lastImportISODate#"0")
+
+C_LONGINT($T)// position of "T" in ISO date
+$T:=Position("T";$lastImportISODate)
+$lastChangedAt:=Time(Substring($lastImportISODate;$T+1))
+$lastChangedOn:=Date($lastImportISODate)
+$recentfile:="the last import"// 
+
+Else 
+
 // Get the next to last method stamp.
 C_LONGINT($currentMethodStamp_l;$lastMethodStamp_l)
 $lastMethodStamp_l:=<>VCM_LastMethodStamp_l
@@ -62,12 +82,14 @@ $recentfile:=Convert path POSIX to system($sourcepath+$methodslastChanged_at{1}+
 // and the get date and time of the last change
 GET DOCUMENT PROPERTIES($recentfile;$locked;$hidden;$createdOn;$createdAt;$lastChangedOn;$lastChangedAt)
 
+End if 
+
 C_LONGINT($index)
 For ($index;Size of array($doclist);1;-1)
 
 GET DOCUMENT PROPERTIES($doclist{$index};$locked;$hidden;$createdOn;$createdAt;$changedOn;$changedAt)
 
-If (($doclist{$index}#"@.txt") | (Match regex(".*\\\\\\..*";$doclist{$index})))
+If (($doclist{$index}#"@.txt") | (Match regex(".*/\\..*";Convert path system to POSIX($doclist{$index}))))// platform agnostic
 // process .txt files only and don't process hidden files with . (like .hg/last-message.txt)
 DELETE FROM ARRAY($doclist;$index)
 
@@ -91,6 +113,7 @@ End if
 End for 
 
 // ====== presenting alert ======
+// TODO improve UI
 C_TEXT($listOfMethods)
 C_LONGINT($methos_index)
 $listOfMethods:=""
@@ -101,8 +124,8 @@ Replace string(Convert path system to POSIX($doclist{$methos_index});<>VCM_ROOT_
 "\t"+String($changedOn)+" "+String($changedAt)+"\n"
 End for 
 
-ALERT("Import von "+String(Size of array($doclist))+" Methoden\n"+\
-"neuer als "+$recentfile+" "+String($lastChangedOn)+" "+String($lastChangedAt)+"\n"+\
+ALERT("Import of "+String(Size of array($doclist))+" methods\n"+\
+"newer as "+$recentfile+" "+String($lastChangedOn)+" "+String($lastChangedAt)+"\n"+\
 $listOfMethods)
 
 PROG_Update ($progID_l;3/4)
@@ -136,7 +159,7 @@ $methodBody:=Document to text($doclist{$index};"UTF-8";Document with CR)
 $error_l:=UTIL_ERR_HandlerRemove 
 End if 
 
-// Wrong encoding
+// Wrong encoding: reading withouterror but the content is empty
 If ($error_l=0)
 If (Length($methodBody)=0)
 $error_l:=<>ERR_IMPORT_WrongEncoding_l
@@ -169,6 +192,11 @@ $index:=Size of array($doclist)+1// break of for-loop
 End if 
 
 End for 
+
+If ($error_l=0)
+// save the timestmap of the last sucessful import
+VC_EXT_PrefSet (<>VCM_LABEL_StampImport_t;String(Current date;ISO date;Current time))
+End if 
 
 PROG_Update ($progID_l;1)
 
