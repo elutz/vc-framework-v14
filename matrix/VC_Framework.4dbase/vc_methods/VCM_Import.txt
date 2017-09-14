@@ -102,8 +102,22 @@ DELETE FROM ARRAY($doclist;$index)
 
 Else 
 
+If ($lastImportISODate#"0")
+// the normal case, don't include the last import itself
+// only newer edits
+If (($changedOn=$lastChangedOn) & ($changedAt<=$lastChangedAt))
+DELETE FROM ARRAY($doclist;$index)
+
+End if 
+
+Else 
+// in the case of using the timestamp of the last edits of the 
+// we have to include the last edits too
+// to not lose some changes
 If (($changedOn=$lastChangedOn) & ($changedAt<$lastChangedAt))
 DELETE FROM ARRAY($doclist;$index)
+
+End if 
 
 End if 
 
