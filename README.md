@@ -132,11 +132,11 @@ The [VC_SVN](https://github.com/4D/vc-svn-v14) component is an example of this. 
 
 ## Import Outside Changes
 
-Now it is possible to import changes made by pother developers in your team. This works with edited methods and new methods. It does not work with 4D forms since there is no way to build forms with means of the 4D programming language.
+Now it is possible to import changes made by other developers in your team. This works with edited methods and new methods. It does not work with 4D forms since there is no way to build forms with means of the 4D programming language.
 These feature is useful if you want to do distributed team development and using a team development 4D server is not an appropriate way for you.
 
 How does it work?
-There is a new method **VCM_Import**. The method can be started using the macro call "Import methods". This triggers the import process. The import process looks for text files with newer or equal timestamp like the last changed method in 4D and shows a list with this found methods before you start the real import.
+There is a new method **VCM_Import**. The method can be started using the macro call "Import methods". This triggers the import process. The import process looks for text files with newer or equal timestamp like the last import or the last changed method in 4D and shows a list with this found methods before you start the real import.
 
 Some notes:
 
